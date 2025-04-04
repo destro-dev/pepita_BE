@@ -159,9 +159,9 @@ class UnderwritingChecklist(UUIDMixin, models.Model):
     class Meta:
         verbose_name = 'Checklist Item'
         verbose_name_plural = 'Checklist Items'
-        ordering = ['-check_date']
+        ordering = ['-created_at']
         # Evita duplicazione dello stesso tipo di checklist per lo stesso assessment
         unique_together = ['assessment', 'kind']
 
     def __str__(self):
-        return f"{self.kind.name}: {self.value}/10 - {self.assessment.company.vat_number} ({self.check_date})"
+        return f"{self.kind.name}: {self.value}/10 - {self.assessment.company.vat_number}"
